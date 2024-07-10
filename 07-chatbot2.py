@@ -9,10 +9,6 @@ import os
 
 #dotenv를 지우고, user id를 화면에서 받아 진행하는 코드 만들기
 
-# ChatOpenAI 모델 초기화
-chat = ChatOpenAI(temperature=0) #temperature: 모델 출력의 다양성과 무작위성을 조정하는 데 사용됨
-                #temperature=0: 가장 가능성이 높은 응답을 선택하여 더 예측가능하고 일관된 출력을 제공함(정확성, 신뢰성이 중요한 상황에서 유용)
-
 # Streamlit UI 설정
 st.set_page_config(page_title="ChatOpenAI Demo", page_icon=":robot:")
 st.header("ChatOpenAI Demo")
@@ -26,6 +22,11 @@ if openai_api_key:
 else:
     st.info("Please add your OpenAI API key to continue.")
     st.stop()
+
+# ChatOpenAI 모델 초기화
+chat = ChatOpenAI(temperature=0) #temperature: 모델 출력의 다양성과 무작위성을 조정하는 데 사용됨
+                #temperature=0: 가장 가능성이 높은 응답을 선택하여 더 예측가능하고 일관된 출력을 제공함(정확성, 신뢰성이 중요한 상황에서 유용
+
 # 세션 상태 초기화
 if "messages" not in st.session_state:
     st.session_state.messages = [
